@@ -1,7 +1,7 @@
-import useCurrentUser from "@/hooks/useCurrentUser";
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import useCurrentUser from "@/hooks/useCurrentUser"; // Assuming this is a custom hook you've defined.
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -18,17 +18,18 @@ export async function getServerSideProps(context: NextPageContext) {
     props: {},
   };
 }
-function profile() {
+
+function Profile() {
   const router = useRouter();
-  const { data: user } = useCurrentUser();
+  const { data: user } = useCurrentUser(); // Assuming useCurrentUser hook returns { data: user }
 
   return (
-    <div className=" flex items-center h-full justify-center">
+    <div className="flex items-center h-full justify-center">
       <div className="flex flex-col">
         <h1 className="text-3xl md:text-6xl text-white text-center">
-          who is watching?
+          Who is watching?
         </h1>
-        <div className=" flex items-center justify-center gap-8 mt-10">
+        <div className="flex items-center justify-center gap-8 mt-10">
           <div onClick={() => router.push("/")}>
             <div className="group flex-row w-44 mx-auto">
               <div className="w-44 h-44 rounded-md flex items-center justify-center border-2 border-transparent group-hover:cursor-pointer group-hover:border-white overflow-hidden">
@@ -45,4 +46,4 @@ function profile() {
   );
 }
 
-export default profile;
+export default Profile;

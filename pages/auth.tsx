@@ -1,13 +1,12 @@
-"use client";
+// Import statements...
 import Input from "@/components/input";
 import { useState, useCallback } from "react";
 import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-
 import { signIn } from "next-auth/react";
 
-function page() {
+function Page() {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -18,12 +17,12 @@ function page() {
       currentVariant === "login" ? "register" : "login"
     );
   }, []);
+
   const login = useCallback(async () => {
     try {
       await signIn("credentials", {
         email,
         password,
-
         callbackUrl: "/profiles",
       });
     } catch (error) {
@@ -125,4 +124,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
