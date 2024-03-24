@@ -9,20 +9,25 @@ import { NextPageContext } from "next";
 import { getSession, signOut } from "next-auth/react";
 
 export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+  try {
+    const session = await getSession(context);
 
-  if (!session) {
+    if (!session) {
+      return {
+        redirect: {
+          destination: "/auth",
+          permanent: false,
+        },
+      };
+    }
+
     return {
-      redirect: {
-        destination: "/auth",
-        permanent: false,
-      },
+      props: {},
     };
+  } catch (error) {
+    console.error("Error getting session:", error);
+    return { props: {} };
   }
-
-  return {
-    props: {},
-  };
 }
 
 export default function Home() {
