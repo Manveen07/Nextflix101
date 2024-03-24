@@ -1,4 +1,5 @@
-DEPLOYMENT (https://nextflix101.vercel.app/)
+ https://user-images.githubusercontent.com/23248726/220005380-ede4fb14-0b8d-4582-a063-3cc4beeccfb7.png
+ DEPLOYMENT (https://nextflix101.vercel.app/)
 <<<<<<< HEAD
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
